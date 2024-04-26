@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>學生管理系統</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">學生列表</h1>
+        <a href="{% url 'student-create' %}" class="btn btn-primary">新增學生</a>
+        <ul class="list-group my-3">
+            {% for student in object_list %}
+                <li class="list-group-item">
+                    {{ student.first_name }} {{ student.last_name }}
+                    <span class="float-right">
+                        <a href="{% url 'student-edit' student.id %}" class="btn btn-sm btn-secondary">編輯</a>
+                        <a href="{% url 'student-delete' student.id %}" class="btn btn-sm btn-danger">刪除</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
